@@ -9,6 +9,7 @@ const uri = process.env.MONGO_URI;
 const port = process.env.PORT || 8000;
 
 const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 //view engine
 app.set("view engine", "ejs");
@@ -19,6 +20,7 @@ app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(userRoutes);
+app.use(authRoutes);
 
 //route handler
 app.get("/", (req, res) => {
