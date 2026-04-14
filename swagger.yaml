@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: User API
+  version: 1.0.0
+  description: API to manage users
+
+paths:
+  /users:
+    post:
+      summary: Create a new user
+      description: Creates a new user in the users collection
+      requestBody:
+        description: User data to create a new user
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: The username of the user
+                  example: john_doe
+                first_name:
+                  type: string
+                  description: The first name of the user
+                  example: John
+                email:
+                  type: string
+                  description: The email of the user
+                  example: john.doe@example.com
+              required:
+                - username
+                - first_name
+                - email
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Bad request, invalid data
+        '500':
+          description: Internal server error

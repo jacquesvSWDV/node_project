@@ -6,6 +6,8 @@ const authController = require('../controllers/authControllers');
 
 router.get('/generate-token', authController.generateToken);
 
+router.post('/verify-token', authController.verifyToken);
+
 
 
 

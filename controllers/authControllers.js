@@ -27,7 +27,7 @@ async function verifyToken(req, res){
     const decoded = jwt.verify(token, secret_key);
 
     if(decoded){
-        res.json({message: 'Token is invalid.', decoded});
+        res.json({message: 'Token is valid.', decoded});
     } else {
         res.status(401).json({message: 'Invalid token.'});
     }
