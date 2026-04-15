@@ -11,6 +11,7 @@ const rateLimit = require("express-rate-limit");
 const swaggerUi = require("swagger-ui-express");
 const YAML = require("yamljs");
 const swaggerDocument = YAML.load("./swagger.yaml");
+const cache = require("apicache").middleware;
 
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -42,6 +43,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //app.use(throttling);
 app.use(limiter);
+app.use(cache("5 minutes"));
 app.use(userRoutes);
 app.use(authRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
